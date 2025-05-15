@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta Aguacate</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #f5fbe6, #e6f2cc);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 360px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .carta {
+      width: 100%;
+      height: 240px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .carta.abierta {
+      transform: rotateY(180deg);
+    }
+
+    .frente,
+    .detras {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      backface-visibility: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .frente {
+      background: linear-gradient(145deg, #d7efb2, #a8d58d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url('https://sdmntpreastus.oaiusercontent.com/files/00000000-d754-61f9-b0f5-9431be00ff35/raw?se=2025-05-15T06%3A19%3A35Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=b0fd38cc-3d33-418f-920e-4798de4acdd1&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-14T22%3A18%3A15Z&ske=2025-05-15T22%3A18%3A15Z&sks=b&skv=2024-08-04&sig=73fOykz9ofFPiop58aBqIqtv0nbSAD8oihqFEPqEiB8%3D');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 110px;
+    }
+
+    .detras {
+      background-color: #ffffff;
+      transform: rotateY(180deg);
+      padding: 25px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 2px dashed #d2e8af;
+    }
+
+    .contenido {
+      color: #4a5a3d;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .contenido h1 {
+      margin: 0;
+      font-size: 1.9em;
+      color: #7aa95a;
+    }
+
+    .contenido p {
+      font-size: 1.1em;
+      line-height: 1.6em;
+      margin-top: 10px;
+    }
+
+    .boton-cerrar {
+      margin-top: 20px;
+      background-color: #a4d07c;
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .boton-cerrar:hover {
+      background-color: #8bb968;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 400px) {
+      .carta {
+        height: 210px;
+      }
+
+      .contenido h1 {
+        font-size: 1.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="carta" id="carta">
+      <div class="frente" onclick="abrirCarta()"></div>
+      <div class="detras">
+        <div class="contenido">
+          <h1>¡Hola!</h1>
+          <p>.............</p>
+          <p>Te mando esta cartita con todo el amor del mundo(●'◡'●)</p>
+          <p>Estoy orgulloso de ti, mi pequeña💕. No te rindas, animos🥑</p>
+          <p>— Joshi💚</p>
+          <button class="boton-cerrar" onclick="cerrarCarta(event)">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function abrirCarta() {
+      document.getElementById('carta').classList.add('abierta');
+    }
+
+    function cerrarCarta(event) {
+      event.stopPropagation();
+      document.getElementById('carta').classList.remove('abierta');
+    }
+  </script>
+</body>
+</html>
